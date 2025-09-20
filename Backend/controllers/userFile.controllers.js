@@ -110,7 +110,8 @@ const handleDeleteUserFileUploads = async (req, res) => {
         if(!deletedFiles){
             return res.status(400).json({success: false , message: `File Does'nt Exist`})
         }
-        const filePath = `C:\\Users\\ff297\\OneDrive\\Desktop\\userUploads\\${req.params.fileFileName}`
+        // const filePath = `C:\\Users\\ff297\\OneDrive\\Desktop\\userUploads\\${req.params.fileFileName}` //! --> Recent
+        const filePath = path.join(__dirname, "../userUploads", req.params.fileFileName)
         fs.unlink(filePath, (err) => {
             if(err){
                 return res.status(400).json({success: false , message: `Error || ${err.message}`})
