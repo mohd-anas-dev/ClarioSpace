@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.HomeDashboard {
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--background-color);
+    font-family: "Poppins", sans-serif;
+
+    .HomeDashboardContainer {
+        width: 100%;
+        min-height: 100vh;
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        padding: 1em;
+
+        .TopHomeDashboard {
+            align-self: center;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ffffff, #f2f2f2, #e0e0e0, #ffffff);
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+            border: solid 1px #dcdcdc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2em;
+            gap: 1em;
+            flex-wrap: wrap;
+            animation: topHeader 6s ease-in-out infinite;
+
+            .Content {
+                flex: 1 1 300px;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5em;
+
+                .ContentHeader {
+                    h1 {
+                        font-size: 32px;
+                        font-weight: 600;
+                    }
+
+                    p {
+                        font-size: 15px;
+                        color: #555;
+                        line-height: 1.5em;
+                    }
+                }
+
+                .ContentButtons {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 1em;
+
+                    button {
+                        padding: 0.7em 1.2em;
+                        border: solid 2px #000;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        background-color: black;
+                        color: white;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 0.3em;
+                        transition: all 0.3s ease 0s;
+
+                        svg {
+                            width: 16px;
+                            height: 16px;
+                        }
+
+                        &:hover {
+                            transform: scale(1.05) translateY(-3px);
+                            box-shadow: 0px 0px 4px 4px black;
+                        }
+
+                        &:active {
+                            transform: scale(1.02);
+                        }
+                    }
+                }
+            }
+
+            .ImageLogo {
+                img {
+                    width: 180px;
+                    height: auto;
+                    filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.3));
+                }
+            }
+        }
+
+        .MiddleHomeDashboard {
+            .MiddleHomeCard {
+                height: 400px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .ForForm {
+                    width: 90%;
+                    max-width: 700px;
+                    height: 300px;
+                    border: dashed 3px #999;
+                    border-radius: 12px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1em;
+                    background: #fff;
+
+
+                    .Limit{
+                      font-size: 11px;
+                      color: #f58e89;
+                    }
+
+                    img {
+                        width: 100px;
+                        height: 100px;
+                        object-fit: cover;
+                    }
+
+                    h1 {
+                        text-align: center;
+                        font-size: 26px;
+                    }
+
+                    p {
+                        font-size: 14px;
+                        color: #666;
+                    }
+
+                    .UploadArea {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+
+                        .UploadForm {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 1em;
+                            align-items: center;
+                            justify-content: center;
+
+                            .CustomFileInput {
+                                display: inline-flex;
+                                align-items: center;
+                                gap: 0.5em;
+                                padding: 0.7em 1.2em;
+                                border: 2px dashed #555;
+                                border-radius: 8px;
+                                cursor: pointer;
+                                background: #f9f9f9;
+                                font-size: 14px;
+                                transition: all 0.3s ease;
+
+                                &:hover {
+                                    background: #f0f0f0;
+                                    transform: scale(1.02);
+                                }
+
+                                input[type="file"] {
+                                    display: none;
+                                }
+
+                                .SPAN {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    gap: 0.3em;
+                                }
+                            }
+
+                            .UploadBtn {
+                                padding: 0.8em 1.5em;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border: none;
+                                background: black;
+                                color: white;
+                                border-radius: 8px;
+                                cursor: pointer;
+                                width: 100px;
+                                font-size: 14px;
+                                font-family: "Poppins", sans-serif;
+                                transition: 0.3s;
+
+                                &:hover {
+                                    background: #333;
+                                    transform: scale(1.05);
+                                }
+                            }
+
+                            .ForError {
+                                color: red !important;
+                                text-align: center;
+
+                            }
+
+                            .ForSuccess {
+                                color: green !important;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .EndHomeDashboard {
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            background: #f8f8f8;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+            .EndHome {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h2 {
+                    font-size: 24px;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5em;
+                }
+
+                .DropDownOptions {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5em;
+
+                    label {
+                        font-size: 14px;
+                        color: #555;
+                    }
+
+                    select {
+                        border-radius: 2px;
+                        padding: 0.2em 0.1em;
+                        border: solid 2px black;
+                        outline: none;
+                        font-family: "Poppins", sans-serif;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+
+                        &:hover {
+                            border-color: #999;
+                        }
+
+                        option {
+                            background-color: var(--foreground-color);
+                            color: var(--background-color);
+                        }
+                    }
+                }
+            }
+
+            .RecentFilesGrid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1em;
+
+                .FileCard {
+                    background: #fff;
+                    border: 1px solid #ddd;
+                    border-radius: 10px;
+                    padding: 1em;
+                    text-align: center;
+                    font-size: 14px;
+                    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+                    cursor: pointer;
+                    transition: 0.2s;
+
+                    &:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+  .HomeDashboardContainer {
+    padding: 0.8em;
+    gap: 1.2em;
+  }
+
+  /* Top Section */
+  .TopHomeDashboard {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5em 1em;
+  }
+
+  .ContentHeader h1 {
+    font-size: 22px;
+    line-height: 1.3em;
+  }
+
+  .ContentHeader p {
+    font-size: 14px;
+  }
+
+  .ContentButtons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .ContentButtons button {
+    flex: 1 1 100%;
+    font-size: 14px;
+    padding: 0.8em;
+  }
+
+  .ImageLogo img {
+    display: none;
+  }
+
+  /* Middle Upload Section */
+  .MiddleHomeDashboard {
+    padding: 0 0.5em;
+  }
+
+  .ForForm {
+    height: auto !important;
+    padding: 1em;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .ForForm h1 {
+    font-size: 18px;
+  }
+
+  .ForForm p {
+    font-size: 13px;
+  }
+
+  .UploadForm {
+    width: 100%;
+  }
+
+  .CustomFileInput {
+    font-size: 13px;
+    padding: 0.6em 1em;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .UploadBtn {
+    width: 100%;
+    font-size: 14px;
+    padding: 0.9em;
+  }
+
+  /* End Section */
+  .EndHomeDashboard {
+    padding: 0.8em;
+  }
+
+  .EndHome {
+    flex-direction: column;
+    gap: 0.8em;
+    text-align: center;
+  }
+
+  .EndHome h2 {
+    font-size: 20px;
+  }
+
+  .DropDownOptions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .DropDownOptions select {
+    width: 100%;
+    font-size: 14px;
+    padding: 0.4em;
+  }
+
+  .RecentFilesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .FileCard {
+    font-size: 13px;
+    padding: 0.8em;
+  }
+}
+
+/* 📱 Extra Small Devices (Phones <480px) */
+@media (max-width: 480px) {
+  .ContentHeader h1 {
+    font-size: 20px;
+  }
+
+  .ContentButtons button {
+    font-size: 13px;
+  }
+
+  .ForForm h1 {
+    font-size: 16px;
+  }
+
+  .RecentFilesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .FileCard {
+    font-size: 12px;
+    padding: 0.7em;
+  }
+}

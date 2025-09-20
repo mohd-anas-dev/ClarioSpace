@@ -1,0 +1,132 @@
+.FeaturesPage{
+    min-height: 100vh;
+    width: 100%;
+    h1{
+        font-family: "Poppins", sans-serif;
+        font-size: 60px;
+        font-weight: 500;
+        text-align: center;
+    }
+}
+
+.FeaturesPageContainer{
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    background-color: #f3f5f7;
+
+    .Stacks{
+        height: 100vh;
+        overflow: hidden;
+        padding: none;
+        pointer-events: none;
+        .StackOne,.StackTwo,.StackThree{
+            pointer-events: none;
+            margin: none;
+            border: double 8px black;
+            min-height: 70vh;
+            background-color: var(--background-color);
+            display: flex;
+            width: 100%;
+            box-shadow: 0px 0px 15px 5px black;
+
+            .LeftStack{
+                width: 100%;
+                padding: 1em;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: "Poppins", sans-serif;
+                justify-content: center;
+                /* flex-wrap: wrap; */
+                /* border: solid 2px red; */
+                /* overflow: hidden; */
+                h1{
+                    text-align: center;
+                    font-size: clamp(30px, 5vw, 70px);
+                }
+                p{
+                    text-align: center;
+                    width: 100%;
+                    font-size: clamp(14px, 1vw, 25px);
+                    color: #333333aa;
+                    
+                }
+            }
+            
+            .RightStack{
+                /* border: solid 2px red; */
+                /* height: 50%; */
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                img{
+                    /* min-width:auto; */
+                    width: 80%;
+                    margin: 0 auto;
+                    object-fit: cover;
+                    /* overflow: visible; */
+                    /* padding: 1em; */
+                    /* filter: drop-shadow(5px 5px 10px black); */
+                    filter:drop-shadow(1px 1px 20px black)
+                    /* object-fit: cover; */
+                }
+            }
+
+        }
+        .StackOne,.StackTwo,.StackThree:hover{
+            pointer-events: auto;
+        }
+    }
+
+}
+
+
+@media (max-width: 1100px) {
+    .FeaturesPage{
+    }
+
+    .FeaturesPageContainer{
+        flex-direction: column;
+        width: 100%;
+
+        .Stacks{
+        }
+        
+        .StackOne,.StackTwo,.StackThree{
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            flex: 1 1 0;
+
+            .LeftStack{
+                /* border: solid 2px green; */
+                h1{
+                    font-size: auto;
+                }
+                width: 100%;
+            }
+            .RightStack{
+                width: 100%;
+                /* border: solid 2px magenta; */
+            }
+        }
+    }
+
+}
+
+@media (max-width: 516px){
+     .FeaturesPageContainer{
+
+     }
+
+}
