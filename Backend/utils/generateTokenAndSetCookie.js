@@ -14,7 +14,7 @@ const generateTokenAndSetCookie = (res, userID) => {
         sameSite: "strict",
         maxAge: 7 * 24 * 60 * 60 * 1000
     })
-    console.log("NODE_ENV: ", process.env.NODE_EN)
+    console.log("NODE_ENV: ", process.env.NODE_ENV)
     return token //! DONT FORGET TO RETURN THE TOKEN
 }
 
