@@ -43,7 +43,7 @@ const MyFilesDashboard = () => {
 
   const handleSortedFiles = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/uploads/allUserFiles")
+      const res = await axios.get("https://clariospace-backend.onrender.com/api/uploads/allUserFiles")
       setsortedFiles(res.data.files)
     } catch {
       console.log(" Unexpected Error ")
@@ -101,7 +101,7 @@ const MyFilesDashboard = () => {
   
   const handleDeletedFiles = async(fileName) => {
     try {
-      const res = await axios.delete(`http://localhost:3000/api/uploads/deleteFile/${fileName}`)
+      const res = await axios.delete(`https://clariospace-backend.onrender.com/api/uploads/deleteFile/${fileName}`)
       setsortedFiles(prev => prev.filter(file => file.fileFileName !== fileName))
       console.log("Deleted Successfully")
     } catch (error) {
@@ -117,7 +117,7 @@ const MyFilesDashboard = () => {
     const currentFile = sortedFiles.find(file => file.fileFileName === fileName)
     const newTag = currentFile?.fileTags === selectedTags ? "": selectedTags
     try {
-      const res = await axios.patch(`http://localhost:3000/api/uploads/UpdateFile/${fileName}`, {
+      const res = await axios.patch(`https://clariospace-backend.onrender.com/api/uploads/UpdateFile/${fileName}`, {
         fileTags: newTag
       })
       // Update the specific file's tag in the local state
@@ -167,7 +167,7 @@ const MyFilesDashboard = () => {
                       <ul>
                         {Files.map((file, index) => {
                           return (
-                            <li key={index} className={file.fileTags || ""}><span  onClick={() => window.open(`http://localhost:3000/userUploads/${file.fileFileName}`)} ><img src={friendlyImages(file.fileFileType)} alt="" />{`${file.fileOriginalName.split('.').slice(0, -1).join('.').replace(/[/_-]/g, ' ').split(' ').slice(0, 2).join(' ')}.${file.fileOriginalName.split('.').pop()}`}</span><div className="MenuOption flex gap-[0.2em]">
+                            <li key={index} className={file.fileTags || ""}><span  onClick={() => window.open(`https://clariospace-backend.onrender.com/userUploads/${file.fileFileName}`)} ><img src={friendlyImages(file.fileFileType)} alt="" />{`${file.fileOriginalName.split('.').slice(0, -1).join('.').replace(/[/_-]/g, ' ').split(' ').slice(0, 2).join(' ')}.${file.fileOriginalName.split('.').pop()}`}</span><div className="MenuOption flex gap-[0.2em]">
                               <svg onClick={() => handleDeletedFiles(file.fileFileName)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash"><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
                             <DropdownMenu><DropdownMenuTrigger ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dotMenu"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuLabel className="font-[Poppins] font-semibold">Sort & Filter</DropdownMenuLabel>
                             <DropdownMenuSub><DropdownMenuSubTrigger className="cursor-pointer">Add Tags</DropdownMenuSubTrigger>

@@ -17,7 +17,7 @@ const ForgotPasswordPage = () => {
         e.preventDefault()
         setisLoading(true)
         try {
-            const res = await axios.post("http://localhost:3000/api/auth/forgot-password", {
+            const res = await axios.post("https://clariospace-backend.onrender.com/api/auth/forgot-password", {
                 userEmail
             })
             setIsMessageTrue(res.data.message)

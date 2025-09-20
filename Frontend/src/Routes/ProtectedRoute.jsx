@@ -10,7 +10,7 @@ const ProtectedRoute = ({children}) => {
 
     const handleUserAuthentication = async() => {
         try {
-            const res = await axios.get("http://localhost:3000/api/auth/check-auth")
+            const res = await axios.get("https://clariospace-backend.onrender.com/api/auth/check-auth")
             setisAuthenticated(true)
         } catch{
             console.log("Error")

@@ -20,7 +20,7 @@ const RegistrationPage = () => {
         e.preventDefault()
         setisLoading(true)
         try {
-            const res = await axios.post("http://localhost:3000/api/auth/signup", {
+            const res = await axios.post("https://clariospace-backend.onrender.com/api/auth/signup", {
                 userName,
                 userEmail,
                 userPassword
@@ -47,7 +47,7 @@ const RegistrationPage = () => {
         e.preventDefault()
         setisLoading(true)
         try {
-            const res = await axios.post("http://localhost:3000/api/auth/login", {
+            const res = await axios.post("https://clariospace-backend.onrender.com/api/auth/login", {
                 userEmail,
                 userPassword
             })

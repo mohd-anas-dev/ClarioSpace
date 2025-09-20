@@ -28,12 +28,14 @@ app.use("/api/uploads", userFileRouter)
 // app.use("/userUploads", express.static(path.join(__dirname, "C:\\Users\\ff297\\OneDrive\\Desktop\\userUploads")))
 // app.use("/userUploads", express.static(path.join(__dirname, "userUploads"))) -----> //! Original
 
-app.use("/userUploads", express.static("C:\\Users\\ff297\\OneDrive\\Desktop\\userUploads"))
+// app.use("/userUploads", express.static("C:\\Users\\ff297\\OneDrive\\Desktop\\userUploads"))  //!--> Most Recent
+app.use("/userUploads", express.static(path.join(__dirname, "userUploads")))
 
 
 
+const PORT = process.env.PORT || 3000
 //! Live Server 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     ConnectMongoDB()
 })
 

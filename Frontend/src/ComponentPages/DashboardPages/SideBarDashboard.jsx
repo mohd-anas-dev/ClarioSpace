@@ -32,7 +32,7 @@ export function SideBarDashboard({
   const [userName, setUserName] = useState("")
 
   const getUserName = async() => {
-    const res = await axios.get("http://localhost:3000/api/auth/check-auth")
+    const res = await axios.get("https://clariospace-backend.onrender.com/api/auth/check-auth")
     setUserName(res.data.user.userName)
   }
 
@@ -42,7 +42,7 @@ export function SideBarDashboard({
   
   const handlseUserLogout = async() => {
     try {
-      const res = await axios.delete("http://localhost:3000/api/auth/logout")
+      const res = await axios.delete("https://clariospace-backend.onrender.com/api/auth/logout")
       navigate("/")
       return res
     } catch{

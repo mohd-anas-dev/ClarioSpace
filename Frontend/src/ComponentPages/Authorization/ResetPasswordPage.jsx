@@ -26,7 +26,7 @@ const ResetPasswordPage = () => {
         setisLoading(true)
         setisMessageFalse("")
         try {
-            const res = await axios.post(`http://localhost:3000/api/auth/reset-password/${resetToken}`, {
+            const res = await axios.post(`https://clariospace-backend.onrender.com/api/auth/reset-password/${resetToken}`, {
                 userPassword
             })
             setisMessageTrue(res.data.message)

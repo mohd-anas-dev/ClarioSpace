@@ -25,7 +25,7 @@ const HomeDashboard = () => {
 
 
   const handleUserName = async () => {
-    const res = await axios.get("http://localhost:3000/api/auth/check-auth")
+    const res = await axios.get("https://clariospace-backend.onrender.com/api/auth/check-auth")
     setUserName(res.data.user.userName)
   }
 
@@ -45,7 +45,7 @@ const HomeDashboard = () => {
     const formData = new FormData(e.target)
 
     try {
-      const res = await axios.post("http://localhost:3000/api/uploads/uploadFiles", formData)
+      const res = await axios.post("https://clariospace-backend.onrender.com/api/uploads/uploadFiles", formData)
       setisMessageTrue(res.data.message)
       setisMessageFalse("")
       e.target.reset()
@@ -73,11 +73,11 @@ const HomeDashboard = () => {
     setCurrentExtentsion(extension)
     try {
       if (extension === "all") {
-        const res = await axios.get("http://localhost:3000/api/uploads/allUserFiles")
+        const res = await axios.get("https://clariospace-backend.onrender.com/api/uploads/allUserFiles")
         setFilteredFiles(res.data.files)
         setisMessageFalse("")
       } else {
-        const res = await axios.get(`http://localhost:3000/api/uploads/allUserFiles/${extension}`)
+        const res = await axios.get(`https://clariospace-backend.onrender.com/api/uploads/allUserFiles/${extension}`)
         setFilteredFiles(res.data.files)
         setisMessageFalse("")
       }
