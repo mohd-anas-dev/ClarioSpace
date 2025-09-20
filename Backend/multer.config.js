@@ -5,7 +5,8 @@ const path = require("path")
 //! Building Multer Storage Configuration
 const userFileStorage = multer.diskStorage({
     destination: function(req , file , cb){
-        cb(null , "../userUploads/")
+        // cb(null , "../userUploads/") //! --> Recent
+         cb(null, path.join(__dirname, "../userUploads"))
     }, filename: function(req , file , cb) {
         const uniqueName = Date.now() + "-" + file.originalname
         cb(null, uniqueName)
