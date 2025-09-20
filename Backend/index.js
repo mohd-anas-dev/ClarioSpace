@@ -22,7 +22,7 @@ app.use(cors({
 }))
 
 //! ------------------ TO CREATE THE FOLDER -----------------
-const uploadDir = path.join(__dirname, "../userUploads");
+const uploadDir = path.join(__dirname, "userUploads");
 if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
 }
@@ -38,7 +38,7 @@ app.use("/api/uploads", userFileRouter)
 
 // app.use("/userUploads", express.static("C:\\Users\\ff297\\OneDrive\\Desktop\\userUploads")) //! --> Before Most Recent
 // app.use("/userUploads", express.static(path.join(__dirname, "userUploads"))) //! ---> Most Recent
-app.use("/userUploads", express.static(path.join(__dirname, "../userUploads")))
+app.use("/userUploads", express.static(path.join(__dirname, "userUploads")))
 
 
 
