@@ -20,6 +20,14 @@ app.use(cors({
     origin: "https://clariospace-frontend.onrender.com",
     credentials: true
 }))
+
+//! ------------------ TO CREATE THE FOLDER -----------------
+const uploadDir = path.join(__dirname, "../userUploads");
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
+
+//! -------------------------------------
 app.get("/", (req, res)=> {
     res.send("Home Page For ClarioSpace")
 })
