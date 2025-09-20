@@ -28,8 +28,8 @@ app.use("/api/uploads", userFileRouter)
 // app.use("/userUploads", express.static(path.join(__dirname, "C:\\Users\\ff297\\OneDrive\\Desktop\\userUploads")))
 // app.use("/userUploads", express.static(path.join(__dirname, "userUploads"))) -----> //! Original
 
-// app.use("/userUploads", express.static("C:\\Users\\ff297\\OneDrive\\Desktop\\userUploads"))  //!--> Most Recent
-app.use("/userUploads", express.static(path.join(__dirname, "userUploads")))
+app.use("/userUploads", express.static("C:\\Users\\ff297\\OneDrive\\Desktop\\userUploads")) 
+// app.use("/userUploads", express.static(path.join(__dirname, "userUploads"))) //! ---> Most Recent
 
 
 
