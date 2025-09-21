@@ -4,6 +4,7 @@ import { useNavigate} from "react-router-dom";
 import axios from "axios";
 import { useState , useEffect} from "react";
 import gsap from "gsap";
+import Logo from "../../assets/Logo.png"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -70,7 +71,7 @@ export function SideBarDashboard({
                 </div>
               </div>
               <div className="TopSideBarLine2">
-                <img src="https://tse1.mm.bing.net/th/id/OIP.Tvomoi7VQfev8W-1DO1-ZgAAAA?w=300&h=300&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" />
+                <img src={Logo} alt="" />
                 <div className="UserDetails">
                   <h5>Good Day 👋</h5>
                   <h1 className="DynamicHeading">{userName}</h1>
