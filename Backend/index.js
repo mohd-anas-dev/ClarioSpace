@@ -90,12 +90,12 @@ app.use("/api/uploads", userFileRouter)
 app.use("/userUploads", express.static(path.join(__dirname, "userUploads")))
 
 //! ------------------ SERVE REACT BUILD -----------------
-const frontendBuildPath = path.join(__dirname, "../frontend/build")
+const frontendBuildPath = path.join(__dirname, "../Frontend/dist")
 app.use(express.static(frontendBuildPath))
 
 //! Fallback Route: all non-API requests go to React index.html
 // Catch-all fallback for React (avoids PathError)
-app.get(/.*/, (req, res) => {
+app.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.join(frontendBuildPath, "index.html"))
 })
 
