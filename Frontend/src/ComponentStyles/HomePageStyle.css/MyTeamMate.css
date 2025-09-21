@@ -56,9 +56,10 @@
 
     
     .SecondImageCursor{
-        width: 200px;
-        height: 225px;
+        width: clamp(110px, 15vw, 25vw);
+        height: clamp(125px, 17vw , 27vw);
         overflow: hidden;
+        padding: 1em;
         position: absolute;
         pointer-events: none;
         z-index: 10;
@@ -73,17 +74,20 @@
         cursor: pointer;
         box-shadow: 0px 0px 4px 4px black;
         h1{
-            font-size: 14px;
+            font-size: 8px;
         }
-        p{
-            font-size: 11px;
+        ul{
+            li{
+                font-size: 11px;
+            }
         }
     }
 }
 .FirstImageCursor{
-     width: 200px;
-        height: 225px;
+            width: clamp(110px, 15vw, 25vw);
+        height: clamp(125px, 17vw , 27vw);
         overflow: hidden;
+        padding: 1em;
         position: absolute;
         pointer-events: none;
         z-index: 10;
@@ -98,19 +102,22 @@
         cursor: pointer;
         box-shadow: 0px 0px 4px 4px black;
         h1{
-            font-size: 14px;
+            font-size: 8px;
         }
-        p{
-            font-size: 11px;
+        ul{
+            li{
+                font-size: 11px;
+            }
         }
 }
 
 .ThirdImageCursor{
-         width: 200px;
-        height: 225px;
+            width: clamp(110px, 15vw, 25vw);
+        height: clamp(125px, 17vw , 27vw);
         overflow: hidden;
         position: absolute;
         pointer-events: none;
+        padding: 1em;
         z-index: 10;
         color: black;
         display: flex;
@@ -123,10 +130,12 @@
         cursor: pointer;
         box-shadow: 0px 0px 4px 4px black;
         h1{
-            font-size: 14px;
+            font-size: 8px;
         }
-        p{
-            font-size: 11px;
+        ul{
+            li{
+                font-size: 11px;
+            }
         }
 }
 

@@ -394,7 +394,6 @@ const MyTeamMate = () => {
                                             <h1>Contribution: </h1>
                                             <li>Project Visionary</li>
                                             <li>Quality Analyst</li>
-                                            <li>Data Organizer</li>
                                         </ul>
                                     </div>
                                 </div>
