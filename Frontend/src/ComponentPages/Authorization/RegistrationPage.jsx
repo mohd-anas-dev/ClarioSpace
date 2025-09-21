@@ -14,13 +14,15 @@ const RegistrationPage = () => {
     const [isLoading, setisLoading] = useState(false)
     const [isMessageTrue, setIsMessageTrue] = useState("")
     const [isMessageFalse, setIsMessageFalse] = useState("")
+    const apiUrl = import.meta.env.VITE_API_URL
+
 
 
     const handleUserSignUp = async (e) => {
         e.preventDefault()
         setisLoading(true)
         try {
-            const res = await axios.post("https://clariospace-backend.onrender.com/api/auth/signup", {
+            const res = await axios.post(`${apiUrl}/api/auth/signup`, {
                 userName,
                 userEmail,
                 userPassword
@@ -47,7 +49,7 @@ const RegistrationPage = () => {
         e.preventDefault()
         setisLoading(true)
         try {
-            const res = await axios.post("https://clariospace-backend.onrender.com/api/auth/login", {
+            const res = await axios.post(`${apiUrl}/api/auth/login`, {
                 userEmail,
                 userPassword
             })

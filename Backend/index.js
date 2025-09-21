@@ -17,7 +17,7 @@ app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(cors({
-    origin: "https://clariospace-frontend.onrender.com",
+    origin: ["https://clariospace-frontend.onrender.com", "http://localhost:5173"],
     credentials: true
 }))
 
@@ -46,7 +46,8 @@ app.use("/userUploads", express.static(path.join(__dirname, "userUploads")))
 const PORT = process.env.PORT || 3000
 //! Live Server 
 app.listen(PORT, () => {
-    ConnectMongoDB()
+    ConnectMongoDB(),
+    console.log("Server  Running on: ", PORT)
 })
 
 

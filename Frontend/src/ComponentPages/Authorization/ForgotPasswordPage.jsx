@@ -5,6 +5,7 @@ import Transitions from '../Transitionss/Transitions'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+const apiUrl = import.meta.env.VITE_API_URL
 
 const ForgotPasswordPage = () => {
     const navigate = useNavigate()
@@ -17,7 +18,7 @@ const ForgotPasswordPage = () => {
         e.preventDefault()
         setisLoading(true)
         try {
-            const res = await axios.post("https://clariospace-backend.onrender.com/api/auth/forgot-password", {
+            const res = await axios.post(`${apiUrl}/api/auth/forgot-password`, {
                 userEmail
             })
             setIsMessageTrue(res.data.message)

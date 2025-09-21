@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+const apiUrl = import.meta.env.VITE_API_URL
 
 const ResetPasswordPage = () => {
     const navigate = useNavigate()
@@ -26,7 +27,7 @@ const ResetPasswordPage = () => {
         setisLoading(true)
         setisMessageFalse("")
         try {
-            const res = await axios.post(`https://clariospace-backend.onrender.com/api/auth/reset-password/${resetToken}`, {
+            const res = await axios.post(`${apiUrl}/api/auth/reset-password/${resetToken}`, {
                 userPassword
             })
             setisMessageTrue(res.data.message)

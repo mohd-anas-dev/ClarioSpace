@@ -16,7 +16,7 @@ const handleUserSignUp = async(req,res) => {
         if(isUserExist){
             return res.status(400).json({success: false , message: "Email ID Is Already Registered, Please Log In"})
         }
-        const hashedPassword = await bcryptjs.hash(userPassword, 15)
+        const hashedPassword = await bcryptjs.hash(userPassword, 10)
         const generateRandomUserVerificationToken =  Math.floor(100000 + Math.random() * 90000).toString();
         const user = new authModel({
             userName,
@@ -115,7 +115,7 @@ const handleUserResetPassword = async(req,res) => {
         if(!user) {
             return res.status(400).json({success: false , message: "Invalid or Expired Token"})
         }
-        const hashedPassword = await bcryptjs.hash(userPassword, 15)
+        const hashedPassword = await bcryptjs.hash(userPassword, 10)
         user.userPassword = hashedPassword,
         user.resetPasswordToken = undefined,
         user.resetPasswordTokenExpiresAt = undefined

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import NotAuthenticated from '@/components/NotAuthenticated'
+const apiUrl = import.meta.env.VITE_API_URL
 
 const ProtectedRoute = ({children}) => {
     const [isLoading, setisLoading] = useState(true)
@@ -10,7 +11,7 @@ const ProtectedRoute = ({children}) => {
 
     const handleUserAuthentication = async() => {
         try {
-            const res = await axios.get("https://clariospace-backend.onrender.com/api/auth/check-auth", {
+            const res = await axios.get(`${apiUrl}/api/auth/check-auth`, {
                 withCredentials: true
             })
             setisAuthenticated(true)

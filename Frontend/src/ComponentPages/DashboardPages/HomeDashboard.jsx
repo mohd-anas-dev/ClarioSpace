@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import DashBaordImage from "../../assets/DashboardImage.png"
 import SmoothScroll from '@/components/SmoothScroll.jsx'
+const apiUrl = import.meta.env.VITE_API_URL
 
 const HomeDashboard = () => {
   const [UserName, setUserName] = useState("")
@@ -25,7 +26,7 @@ const HomeDashboard = () => {
 
 
   const handleUserName = async () => {
-    const res = await axios.get("https://clariospace-backend.onrender.com/api/auth/check-auth")
+    const res = await axios.get(`${apiUrl}/api/auth/check-auth`)
     setUserName(res.data.user.userName)
   }
 
@@ -45,7 +46,7 @@ const HomeDashboard = () => {
     const formData = new FormData(e.target)
 
     try {
-      const res = await axios.post("https://clariospace-backend.onrender.com/api/uploads/uploadFiles", formData)
+      const res = await axios.post(`${apiUrl}/api/uploads/uploadFiles`, formData)
       setisMessageTrue(res.data.message)
       setisMessageFalse("")
       e.target.reset()
@@ -73,11 +74,11 @@ const HomeDashboard = () => {
     setCurrentExtentsion(extension)
     try {
       if (extension === "all") {
-        const res = await axios.get("https://clariospace-backend.onrender.com/api/uploads/allUserFiles")
+        const res = await axios.get(`${apiUrl}/api/uploads/allUserFiles`)
         setFilteredFiles(res.data.files)
         setisMessageFalse("")
       } else {
-        const res = await axios.get(`https://clariospace-backend.onrender.com/api/uploads/allUserFiles/${extension}`)
+        const res = await axios.get(`${apiUrl}/api/uploads/allUserFiles/${extension}`)
         setFilteredFiles(res.data.files)
         setisMessageFalse("")
       }
