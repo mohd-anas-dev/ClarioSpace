@@ -94,8 +94,8 @@ const frontendBuildPath = path.join(__dirname, "../Frontend/dist")
 app.use(express.static(frontendBuildPath))
 
 //! Fallback Route: all non-API requests go to React index.html
-// Catch-all fallback for React (avoids PathError)
-app.get("*", (req, res) => {
+// Catch-all fallback for React SPA (Express v5 compatible)
+app.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.join(frontendBuildPath, "index.html"))
 })
 
