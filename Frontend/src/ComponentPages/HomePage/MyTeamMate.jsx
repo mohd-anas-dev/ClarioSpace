@@ -195,9 +195,9 @@
 
 import React, { useEffect } from 'react'
 import "../../ComponentStyles/HomePageStyle.css/MyTeamMate.css"
-import MohammedAnas from "../../../dist/assets/MohammedAnas (2).jpg"
+import MohammedAnas from "../../assets/MohammedAnas (2).jpg"
 import SayedAnas from "../../assets/Sayed-Anas.jpg"
-import Zuhaib from "../../../dist/assets/Zuhaib-sjmuE5XL.jpg"
+import Zuhaib from "../../assets/Zuhaib-sjmuE5XL.jpg"
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
