@@ -101,23 +101,48 @@ const MyFilesDashboard = () => {
   }, {})
 
 
+  //! Original File
+  // const handleDeletedFiles = async (fileName) => {
+  //   try {
+  //     setDeletePerFiles(prev => ({ ...prev, [fileName]: true }))
+  //     const res = await axios.delete(`${apiUrl}/api/uploads/deleteFile/${fileName}`)
+  //     setsortedFiles(prev => prev.filter(file => file.fileFileName !== fileName))
+  //     console.log("Deleted Successfully")
+  //     setIsLoading(true)
+  //   } catch (error) {
+  //     if (error.response) {
+  //       console.log(`Error || ${error.response.data.message}`)
+  //     } else {
+  //       console.log("Error")
+  //     }
+  //   } finally {
+  //     setDeletePerFiles(prev => ({ ...prev, [fileName]: false }))
+  //   }
+  // }
+
+  //! 
   const handleDeletedFiles = async (fileName) => {
-    try {
-      setDeletePerFiles(prev => ({ ...prev, [fileName]: true }))
-      const res = await axios.delete(`${apiUrl}/api/uploads/deleteFile/${fileName}`)
-      setsortedFiles(prev => prev.filter(file => file.fileFileName !== fileName))
-      console.log("Deleted Successfully")
-      setIsLoading(true)
-    } catch (error) {
-      if (error.response) {
-        console.log(`Error || ${error.response.data.message}`)
-      } else {
-        console.log("Error")
-      }
-    } finally {
-      setDeletePerFiles(prev => ({ ...prev, [fileName]: false }))
+  try {
+    setDeletePerFiles(prev => ({ ...prev, [fileName]: true }))
+    const res = await axios.delete(`${apiUrl}/api/uploads/deleteFile/${fileName}`)
+        setsortedFiles(prev => prev.filter(file => file.fileFileName !== fileName))
+    
+    console.log("Deleted Successfully")
+    
+    
+  } catch (error) {
+    await handleSortedFiles()
+    
+    if (error.response) {
+      console.log(`Error || ${error.response.data.message}`)
+    } else {
+      console.log("Error")
     }
+  } finally {
+    setDeletePerFiles(prev => ({ ...prev, [fileName]: false }))
   }
+}
+
 
   const handleUpdateFileTags = async (fileName, selectedTags) => {
     const currentFile = sortedFiles.find(file => file.fileFileName === fileName)
