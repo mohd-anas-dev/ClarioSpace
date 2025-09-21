@@ -13,6 +13,7 @@
 
 .MobileSideBar{
     border-top-right-radius: 40px;
+    min-height: auto;
 }
 .SideBarContainer{
     box-shadow: 0px 0px 3px 2px black;
@@ -185,17 +186,6 @@
     opacity: 1 !important;
 }
 
-/* .ab::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 0;
-    height: 2px;
-    transition: width ease 300ms;
-    transform-origin: left;
-    background-color: black;
-} */
 
 .ab:hover:after {
     width: 100%;
@@ -266,3 +256,9 @@
 }
 
 
+
+
+@media (max-width:600px) {
+    
+    
+}
