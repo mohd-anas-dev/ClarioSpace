@@ -94,9 +94,11 @@ const frontendBuildPath = path.join(__dirname, "../frontend/build")
 app.use(express.static(frontendBuildPath))
 
 //! Fallback Route: all non-API requests go to React index.html
-app.get("*", (req, res) => {
+// Catch-all fallback for React (avoids PathError)
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(frontendBuildPath, "index.html"))
 })
+
 
 //! ------------------ START SERVER -----------------
 const PORT = process.env.PORT || 3000
