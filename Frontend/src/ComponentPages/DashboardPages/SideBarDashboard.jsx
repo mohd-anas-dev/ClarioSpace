@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useNavigate} from "react-router-dom";
 import axios from "axios";
 import { useState , useEffect} from "react";
+import gsap from "gsap";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,6 +25,7 @@ import {
   Sidebar,
 } from "../../components/ui/sidebar.jsx"
 import "../../ComponentStyles/DashboardPagesStyle/SideBarDashBoardStyle.css"
+import { useGSAP } from "@gsap/react";
 
 export function SideBarDashboard({
   ...props
@@ -50,6 +52,7 @@ export function SideBarDashboard({
       console.log("|| Unknown 404 Error ||")
     }
   }
+
   return (
     <Sidebar {...props}>
       <div className="SideBar">
@@ -70,7 +73,7 @@ export function SideBarDashboard({
                 <img src="https://tse1.mm.bing.net/th/id/OIP.Tvomoi7VQfev8W-1DO1-ZgAAAA?w=300&h=300&rs=1&pid=ImgDetMain&o=7&rm=3" alt="" />
                 <div className="UserDetails">
                   <h5>Good Day 👋</h5>
-                  <h1>{userName}</h1>
+                  <h1 className="DynamicHeading">{userName}</h1>
                 </div>
               </div>
             </div>

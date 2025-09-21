@@ -12,7 +12,9 @@ import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import DashBaordImage from "../../assets/DashboardImage.png"
+import gsap from 'gsap'
 import SmoothScroll from '@/components/SmoothScroll.jsx'
+import { useGSAP } from '@gsap/react'
 const apiUrl = import.meta.env.VITE_API_URL
 
 const HomeDashboard = () => {
@@ -21,6 +23,7 @@ const HomeDashboard = () => {
   const [isMessageTrue, setisMessageTrue] = useState("")
   const [isMessageFalse, setisMessageFalse] = useState("")
   const [selectedFiles, setSelectedFiles] = useState(null)
+
 
   const navigate = useNavigate()
 
@@ -88,6 +91,17 @@ const HomeDashboard = () => {
   }
 
 
+  useGSAP(() => {
+    gsap.from(".DynamicHeading, .WelcomeMotto", {
+      opacity: 0,
+      y: 15,
+      ease: "power1.out",
+      delay: 0,
+      duration: 1
+    })
+  }, [])
+
+
 
   return (
     <SmoothScroll>
@@ -104,8 +118,8 @@ const HomeDashboard = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h1>{`Hi ${UserName}.`}</h1>
-                  <p>
+                  <h1 className='DynamicHeading'>{`Hi ${UserName}.`}</h1>
+                  <p className='WelcomeMotto'>
                     Welcome to <strong>ClarioSpace</strong>. Organize, share,
                     and collaborate on files with ease. Let’s make your work more
                     productive and inspiring today!
