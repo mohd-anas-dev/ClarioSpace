@@ -39,6 +39,7 @@ const MyFilesDashboard = () => {
   const navigate = useNavigate()
   const [sortedFiles, setsortedFiles] = useState([])
   const [isLaoding, setIsLoading] = useState(true)
+  const [deletePerFiles, setDeletePerFiles] = useState({})
   const apiUrl = import.meta.env.VITE_API_URL
 
 
@@ -86,7 +87,7 @@ const MyFilesDashboard = () => {
     if (mimeType.includes("text")) return `${TextLogo}`
 
     return UNKLogo
-    
+
   }
 
 
@@ -99,38 +100,42 @@ const MyFilesDashboard = () => {
     return files
   }, {})
 
-  
-  const handleDeletedFiles = async(fileName) => {
+
+  const handleDeletedFiles = async (fileName) => {
     try {
+      setDeletePerFiles(prev => ({ ...prev, [fileName]: true }))
       const res = await axios.delete(`${apiUrl}/api/uploads/deleteFile/${fileName}`)
       setsortedFiles(prev => prev.filter(file => file.fileFileName !== fileName))
       console.log("Deleted Successfully")
+      setIsLoading(true)
     } catch (error) {
-      if(error.response){
+      if (error.response) {
         console.log(`Error || ${error.response.data.message}`)
       } else {
         console.log("Error")
       }
+    } finally {
+      setDeletePerFiles(prev => ({ ...prev, [fileName]: false }))
     }
   }
 
-  const handleUpdateFileTags = async(fileName, selectedTags) => {
+  const handleUpdateFileTags = async (fileName, selectedTags) => {
     const currentFile = sortedFiles.find(file => file.fileFileName === fileName)
-    const newTag = currentFile?.fileTags === selectedTags ? "": selectedTags
+    const newTag = currentFile?.fileTags === selectedTags ? "" : selectedTags
     try {
       const res = await axios.patch(`${apiUrl}/api/uploads/UpdateFile/${fileName}`, {
         fileTags: newTag
       })
       // Update the specific file's tag in the local state
 
-      setsortedFiles(prev => prev.map(file => 
-        file.fileFileName === fileName 
-        ? { ...file, fileTags: newTag, }
-        : file
+      setsortedFiles(prev => prev.map(file =>
+        file.fileFileName === fileName
+          ? { ...file, fileTags: newTag, }
+          : file
       ))
       console.log(res.data.message)
     } catch (error) {
-      if(error.response){
+      if (error.response) {
         console.log(error.response.data.message)
       }
       else {
@@ -139,7 +144,7 @@ const MyFilesDashboard = () => {
     }
   }
 
-  
+
 
   return (
     <>
@@ -161,24 +166,50 @@ const MyFilesDashboard = () => {
                   <button onClick={() => navigate("/dashboard")}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload-icon lucide-upload"><path d="M12 3v12" /><path d="m17 8-5-5-5 5" /><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /></svg>Upload Files</button>
                 </div>}
               <div className="MiddleMyFilesDashboard">
-                {Object.entries(groupedData).sort(([a],[b])=> a.localeCompare(b)).map(([FileType, Files]) => {
+                {Object.entries(groupedData).sort(([a], [b]) => a.localeCompare(b)).map(([FileType, Files]) => {
                   return (
                     <div className="MyFileCard" key={FileType}>
                       <h1>{friendlyMimeTypes(FileType)}</h1>
                       <ul>
                         {Files.map((file, index) => {
                           return (
-                            <li key={index} className={file.fileTags || ""}><span  onClick={() => window.open(`${apiUrl}/userUploads/${file.fileFileName}`)} ><img src={friendlyImages(file.fileFileType)} alt="" />{`${file.fileOriginalName.split('.').slice(0, -1).join('.').replace(/[/_-]/g, ' ').split(' ').slice(0, 2).join(' ')}.${file.fileOriginalName.split('.').pop()}`}</span><div className="MenuOption flex gap-[0.2em]">
-                              <svg onClick={() => handleDeletedFiles(file.fileFileName)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash"><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg>
-                            <DropdownMenu><DropdownMenuTrigger ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dotMenu"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuLabel className="font-[Poppins] font-semibold">Sort & Filter</DropdownMenuLabel>
-                            <DropdownMenuSub><DropdownMenuSubTrigger className="cursor-pointer">Add Tags</DropdownMenuSubTrigger>
-                            <DropdownMenuSubContent >
-                              <DropdownMenuItem onClick={() => handleUpdateFileTags(file.fileFileName, "Work")}  className="cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#035c96" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot cursor-pointer"><circle cx="12.1" cy="12.1" r="1"/></svg>Work</DropdownMenuItem>
-                              <DropdownMenuItem   onClick={() => handleUpdateFileTags(file.fileFileName, "Study")} className="cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d40e0e" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot cursor-pointer"><circle cx="12.1" cy="12.1" r="1"/></svg>Study</DropdownMenuItem>
-                              <DropdownMenuItem  onClick={() => handleUpdateFileTags(file.fileFileName, "Personal")} className="cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#46bf55" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot cursor-pointer"><circle cx="12.1" cy="12.1" r="1"/></svg>Personal</DropdownMenuItem>
-                            </DropdownMenuSubContent>
-                            </DropdownMenuSub><DropdownMenuSeparator/></DropdownMenuContent>
-                            </DropdownMenu></div></li>
+                            <li key={index} className={file.fileTags || ""}><span onClick={() => window.open(`${apiUrl}/userUploads/${file.fileFileName}`)} ><img src={friendlyImages(file.fileFileType)} alt="" />{`${file.fileOriginalName.split('.').slice(0, -1).join('.').replace(/[/_-]/g, ' ').split(' ').slice(0, 2).join(' ')}.${file.fileOriginalName.split('.').pop()}`}</span><div className="MenuOption flex gap-[0.2em]">
+                              {deletePerFiles[file.fileFileName] ? (
+                                <div class="loaderDelete">
+                                  <span class="barDelete"></span>
+                                  <span class="barDelete"></span>
+                                  <span class="barDelete"></span>
+                                </div>// Or use a spinner icon here
+                              ) : (
+                                <svg
+                                  onClick={() => handleDeletedFiles(file.fileFileName)}
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="24"
+                                  height="24"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  className="lucide lucide-trash-icon lucide-trash"
+                                >
+                                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                                  <path d="M3 6h18" />
+                                  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                </svg>
+                              )}
+
+                              {/* <svg onClick={() => handleDeletedFiles(file.fileFileName)}  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash"  {deletePerFiles[file.fileFileName] ? ()}><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg> */}
+                              <DropdownMenu><DropdownMenuTrigger ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dotMenu"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuLabel className="font-[Poppins] font-semibold">Sort & Filter</DropdownMenuLabel>
+                                <DropdownMenuSub><DropdownMenuSubTrigger className="cursor-pointer">Add Tags</DropdownMenuSubTrigger>
+                                  <DropdownMenuSubContent >
+                                    <DropdownMenuItem onClick={() => handleUpdateFileTags(file.fileFileName, "Work")} className="cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#035c96" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot cursor-pointer"><circle cx="12.1" cy="12.1" r="1" /></svg>Work</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => handleUpdateFileTags(file.fileFileName, "Study")} className="cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d40e0e" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot cursor-pointer"><circle cx="12.1" cy="12.1" r="1" /></svg>Study</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => handleUpdateFileTags(file.fileFileName, "Personal")} className="cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#46bf55" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-dot-icon lucide-dot cursor-pointer"><circle cx="12.1" cy="12.1" r="1" /></svg>Personal</DropdownMenuItem>
+                                  </DropdownMenuSubContent>
+                                </DropdownMenuSub><DropdownMenuSeparator /></DropdownMenuContent>
+                              </DropdownMenu></div></li>
                           )
                         })}
                       </ul>

@@ -226,6 +226,40 @@
     gap: 0.1em;
 }
 
+.loaderDelete {
+  display: flex;
+  align-items: center;
+}
+
+.barDelete {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background-color:black;
+  border-radius: 10px;
+  animation: scale-up4Delete 1s linear infinite;
+}
+
+.barDelete:nth-child(2) {
+  height: 20px;
+  margin: 0 2px;
+  animation-delay: .25s;
+}
+
+.barDelete:nth-child(3) {
+  animation-delay: .5s;
+}
+
+@keyframes scale-up4Delete {
+  20% {
+    background-color: black;
+    transform: scaleY(1.5);
+  }
+
+  40% {
+    transform: scaleY(1);
+  }
+}
 .MyFileCard li {
     cursor: pointer;
     width: 100%;
