@@ -4,7 +4,6 @@ import { useState } from 'react'
 import LoadingSpinner from '@/components/LoadingSpinner'
 import NotAuthenticated from '@/components/NotAuthenticated'
 const apiUrl = import.meta.env.VITE_API_URL
-
 const ProtectedRoute = ({children}) => {
     const [isLoading, setisLoading] = useState(true)
     const [isAuthenticated, setisAuthenticated] = useState(false)
