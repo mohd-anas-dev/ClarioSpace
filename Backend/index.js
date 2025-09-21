@@ -95,9 +95,10 @@ app.use(express.static(frontendBuildPath))
 
 //! Fallback Route: all non-API requests go to React index.html
 // Catch-all fallback for React (avoids PathError)
-app.get(/^\/(?!api).*/, (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.join(frontendBuildPath, "index.html"))
 })
+
 
 
 //! ------------------ START SERVER -----------------
