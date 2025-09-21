@@ -415,7 +415,7 @@ const MyTeamMate = () => {
                             onMouseEnter={() => gsap.to(".ThirdImageCursor", {scale: 1})} 
                             onMouseLeave={() => gsap.to(".ThirdImageCursor", {scale: 0})}>
                                 <div className="ThirdImageCursor" >
-                                    <h1>Mohammed Zuhaib Khan</h1>
+                                    <h1>Zuhaib Mohammed Ahsan Khan</h1>
                                     <ul>
                                         <li>UI/UX Designer</li>
                                         <li>Documentation Lead</li>
