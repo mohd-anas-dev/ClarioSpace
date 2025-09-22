@@ -101,26 +101,6 @@ const MyFilesDashboard = () => {
   }, {})
 
 
-  //! Original File
-  // const handleDeletedFiles = async (fileName) => {
-  //   try {
-  //     setDeletePerFiles(prev => ({ ...prev, [fileName]: true }))
-  //     const res = await axios.delete(`${apiUrl}/api/uploads/deleteFile/${fileName}`)
-  //     setsortedFiles(prev => prev.filter(file => file.fileFileName !== fileName))
-  //     console.log("Deleted Successfully")
-  //     setIsLoading(true)
-  //   } catch (error) {
-  //     if (error.response) {
-  //       console.log(`Error || ${error.response.data.message}`)
-  //     } else {
-  //       console.log("Error")
-  //     }
-  //   } finally {
-  //     setDeletePerFiles(prev => ({ ...prev, [fileName]: false }))
-  //   }
-  // }
-
-  //! 
   const handleDeletedFiles = async (fileName) => {
   try {
     setDeletePerFiles(prev => ({ ...prev, [fileName]: true }))
@@ -151,7 +131,6 @@ const MyFilesDashboard = () => {
       const res = await axios.patch(`${apiUrl}/api/uploads/UpdateFile/${fileName}`, {
         fileTags: newTag
       })
-      // Update the specific file's tag in the local state
 
       setsortedFiles(prev => prev.map(file =>
         file.fileFileName === fileName
@@ -204,7 +183,7 @@ const MyFilesDashboard = () => {
                                   <span class="barDelete"></span>
                                   <span class="barDelete"></span>
                                   <span class="barDelete"></span>
-                                </div>// Or use a spinner icon here
+                                </div>
                               ) : (
                                 <svg
                                   onClick={() => handleDeletedFiles(file.fileFileName)}
@@ -224,8 +203,6 @@ const MyFilesDashboard = () => {
                                   <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
                                 </svg>
                               )}
-
-                              {/* <svg onClick={() => handleDeletedFiles(file.fileFileName)}  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash"  {deletePerFiles[file.fileFileName] ? ()}><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg> */}
                               <DropdownMenu><DropdownMenuTrigger ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dotMenu"><circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" /><circle cx="12" cy="19" r="1" /></svg></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuLabel className="font-[Poppins] font-semibold">Sort & Filter</DropdownMenuLabel>
                                 <DropdownMenuSub><DropdownMenuSubTrigger className="cursor-pointer">Add Tags</DropdownMenuSubTrigger>
                                   <DropdownMenuSubContent >
@@ -254,25 +231,3 @@ const MyFilesDashboard = () => {
 export default MyFilesDashboard
 
 
-
-
-
-
-// {Object.entries(groupedData).length === 0 && <div  className='MidText'>
-//   <p>Upload Files To Get Started</p>
-//   <button onClick={() => navigate("/dashboard")}><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-upload-icon lucide-upload"><path d="M12 3v12"/><path d="m17 8-5-5-5 5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></svg>Upload Files</button>
-//   </div>}
-// <div className="MiddleMyFilesDashboard">
-//   {Object.entries(groupedData)?.map(([fileType, files])=> {
-//     return (
-//   <div className="MyFileCard" key={fileType}>
-//     <h1>{fileType.toUpperCase().replace(/[_ + - \/ . () {} ]/g, " ").split("").slice(-4)} Files</h1>
-//     <ul>
-//       {files.map((file,index) => (
-//         <li key={index}><span><img src="" alt="" /><a href={file.fileFilePath} target="_blank">{`${file.fileOriginalName.split('.').slice(0, -1).join('.').replace(/[/_-]/g, ' ').split(' ').slice(0, 3).join(' ')}.${file.fileOriginalName.split('.').pop()}`}</a></span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash"><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg></li>
-//       ))}
-//     </ul>
-//   </div>
-//     )
-//   })}
-// </div>

@@ -2,7 +2,6 @@ import React from 'react'
 import "../../ComponentStyles/HomePageStyle.css/FeaturesPage.css"
 import ScrollStack, { ScrollStackItem } from '../../components/ScrollStack.jsx'
 import Sort from "../../assets/Sort.png"
-import ImageTwo from "../../assets/image (4).png"
 import Organize from "../../assets/Organize.png"
 
 

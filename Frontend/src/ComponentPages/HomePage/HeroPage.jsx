@@ -48,27 +48,6 @@ const HeroPage = () => {
         })
     }, { scope: scrollRef })
 
-    const CustomHoverExpand = () => {
-        const Images = [
-            {
-                src: "https://tse2.mm.bing.net/th/id/OIP.7cRYFyLoDEDh4sRtM73vvwHaDg?rs=1&pid=ImgDetMain&o=7&rm=3",
-                alt: "Team1",
-                code: "# 01"
-            },
-            {
-                src: "https://ichef.bbci.co.uk/images/ic/976xn/p0bvgbs6.jpg",
-                alt: "Team2",
-                code: "# 02"
-            },
-            {
-                src: "https://images.pexels.com/photos/1563678/pexels-photo-1563678.jpeg?cs=srgb&dl=pexels-deeanacreates-1563678.jpg&fm=jpg",
-                alt: "Team3",
-                code: "# 03"
-            }
-        ]
-        return <HoverExpand_001 images={Images} className="" />
-    }
-
     return (
         <>
             <SmoothScroll>

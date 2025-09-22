@@ -85,7 +85,8 @@
         width: 70px;
         height: 70px;
         object-fit: cover;
-        border-radius: 50%;
+        border-radius: 15px;
+        box-shadow: 0px 0px 4px 2px black;
     }
     .UserDetails{
         h5{
@@ -257,8 +258,3 @@
 
 
 
-
-@media (max-width:600px) {
-    
-    
-}
