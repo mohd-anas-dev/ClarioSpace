@@ -7,7 +7,7 @@ ClarioSpace is a modern, full-stack web application designed as an all-in-one pl
 ## ✨ Features
 
 ### 🗂️ File Management
-- **Multi-file Upload**: Upload up to 10 files simultaneously with drag-and-drop support
+- **Multi-file Upload**: Upload up to 10 files simultaneously (Press "Upload" to Upload)
 - **Smart Organization**: Automatic file type detection with custom icons
 - **Tagging System**: Organize files with Work, Study, and Personal tags
 - **File Operations**: View, download, and delete files with intuitive controls
