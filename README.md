@@ -4,7 +4,7 @@
 
 ClarioSpace is a modern, full-stack web application designed as an all-in-one platform for academic resource management. It provides a unified workspace where users can organize, share, and collaborate on academic files, transforming static resources into dynamic, interactive conversations.
 
-![V6 Engine Screenshot](https://mohdanasfolio.netlify.app/ProjectsImage/V6Engine.png) 
+![ClarioSpace](https://i.postimg.cc/GhcnSbq9/image.png) 
 
 ## ✨ Features
 
