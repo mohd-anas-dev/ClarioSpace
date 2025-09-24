@@ -194,9 +194,9 @@ const MyTeamMate = () => {
                                     <h1>Sayed Muhammed Anas</h1>
                                     <div className="Roles">
                                         <ul>
-                                            <h1>Contribution: </h1>
-                                            <li>Project Visionary</li>
-                                            <li>Quality Analyst</li>
+                                            <li>Backend Lead</li>
+                                            <li>QA & Testing Lead</li>
+                                            <li>Documentation Lead</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -208,8 +208,8 @@ const MyTeamMate = () => {
                                 <div className="FirstImageCursor">
                                     <h1>Mohammed Anas</h1>
                                     <ul>
+                                        <li>Full-Stack Lead</li>
                                         <li>Founder & Lead Architect</li>
-                                        <li>Full-Stack Creator</li>
                                     </ul>
                                 </div>
                                 <img src={MohammedAnas} alt="Mohammed Anas" />
@@ -221,7 +221,7 @@ const MyTeamMate = () => {
                                     <h1>Zuhaib Mohammed Ahsan Khan</h1>
                                     <ul>
                                         <li>UI/UX Designer</li>
-                                        <li>Documentation Lead</li>
+                                        <li>Authorization Security Lead</li>
                                     </ul>
                                 </div>
                                 <img src={Zuhaib} alt="Mohammed Zuhaib Khan" />

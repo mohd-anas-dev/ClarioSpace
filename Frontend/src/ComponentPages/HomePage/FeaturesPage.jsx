@@ -3,6 +3,7 @@ import "../../ComponentStyles/HomePageStyle.css/FeaturesPage.css"
 import ScrollStack, { ScrollStackItem } from '../../components/ScrollStack.jsx'
 import Sort from "../../assets/Sort.png"
 import Organize from "../../assets/Organize.png"
+import Sharing from "../../assets/Sharing.png"
 
 
 const FeaturesPage = () => {
@@ -37,7 +38,7 @@ const FeaturesPage = () => {
                 <p>Cross-sharing your files is now effortless—collaborate seamlessly, tackle challenges together, and find smarter solutions faster.</p>
               </div>
               <div className="RightStack">
-                <img src={Sort} alt="" />
+                <img src={Sharing} alt="" />
               </div>
             </ScrollStackItem>
           </ScrollStack>

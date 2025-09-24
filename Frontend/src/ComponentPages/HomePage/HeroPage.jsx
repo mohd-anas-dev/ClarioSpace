@@ -93,7 +93,7 @@ const HeroPage = () => {
                             </button>
                         </div>
                         <div className="EndMostContainer">
-                            <img src={`${HomeImage}`}   ref={scrollRef} alt="" />
+                            <img src={`${HomeImage}`}  alt="" />
                             <div>
                                 <section id="features" name="features">
                                     <FeaturesPage />
