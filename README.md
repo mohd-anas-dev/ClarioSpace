@@ -142,7 +142,6 @@ npm run preview
 ### 6. Access the Application
 - **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:3000
-- **API Documentation**: http://localhost:3000/api
 
 ## 🔗 API Endpoints
 
@@ -184,8 +183,7 @@ PATCH  /api/uploads/UpdateFile/:filename # Update file tags
 - **Dashboard**: Overview and quick access
 - **My Files**: File management interface
 - **Friends**: Collaboration features (coming soon)
-- **Settings**: Account and application settings
-- **Trash**: Deleted file recovery (coming soon)
+- **Settings**: Account and application settings (coming soon)
 
 ## 🔧 Configuration
 
@@ -272,21 +270,14 @@ We welcome contributions to ClarioSpace! Please follow these steps:
 ## 👥 Team
 
 ### Core Contributors
-- **Mohammed Anas** - Founder & Lead Architect, Full-Stack Creator
-- **Sayed Mohammed Anas** - Project Visionary, Quality Analyst, Data Organizer
-- **Mohammed Zuhaib Khan** - UI/UX Designer, Documentation Lead
+- **Mohammed Anas** - Full-Stack Lead, Founder & Lead Architect
+- **Sayed Mohammed Anas** - Backend Lead, QA & Testing Lead, Documentation Lead
+- **Mohammed Zuhaib Khan** - UI/UX Designer & Authorization Security
 
 ## 📄 License
 
 This project is licensed under the ISC License - see the [LICENSE](LICENSE) file for details.
 
-## 🐛 Issues & Support
-
-If you encounter any issues or have questions:
-
-1. Check the [Issues](https://github.com/yourusername/clariospace/issues) page
-2. Create a new issue with detailed information
-3. Contact the development team
 
 ## 🔮 Roadmap
 
