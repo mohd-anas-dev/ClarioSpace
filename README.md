@@ -273,7 +273,7 @@ We welcome contributions to ClarioSpace! Please follow these steps:
 
 ### Core Contributors
 - **Mohammed Anas** - Full-Stack Lead, Founder & Lead Architect
-- **Sayed Mohammed Anas** - Backend Lead, QA & Testing Lead, Documentation Lead
+- **Sayed Muhammad Anas** - Backend Lead, QA & Testing Lead, Documentation Lead
 - **Mohammed Zuhaib Khan** - UI/UX Designer & Authorization Security
 
 ## 📄 License
